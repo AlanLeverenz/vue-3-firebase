@@ -10,11 +10,15 @@
     <h1>Hello, Vue :)</h1>
 
     <div id="app">
-        <p>{{ title }} - {{ author }} - {{ age }}</p>
+        <div v-if="showBooks">
+            <p>{{ title }} - {{ author }} - {{ age }}</p>
+        </div>
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
 
-        <button v-on:click="age++">Increase age</button>
-        <button v-on:click="age--">Decrease age</button>
-        <div @click="changeTitle('Oath Bringer')">Change title</div>
+        <div v-show="showBooks">Currently Showing Books</div>
     </div>
     
     <script src="app.js"></script>

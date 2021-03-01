@@ -6,18 +6,28 @@ const app = Vue.createApp({
     // data, functions
     data() {
         return {
+            showBooks: true,
             title: 'The Final Empire',
             author: 'Brandon Sanderson',
             age: 45
         }
     },
     methods: {
-        changeTitle(title) {
-            // this.title = 'Words of Radiance'
-            this.title = title
+        toggleShowBooks() {
+            this.showBooks = !this.showBooks
         }
+
+        // changeTitle(title) {
+        //     // this.title = 'Words of Radiance'
+        //     // title was passed in from the template
+        //     this.title = title
+        // }
     }
+    
 })
+
+
+
 // mounts Vue in the html template DOM with id 'app'
 app.mount('#app')
 
