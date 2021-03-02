@@ -7,9 +7,11 @@ const app = Vue.createApp({
     data() {
         return {
             showBooks: true,
-            title: 'The Final Empire',
-            author: 'Brandon Sanderson',
-            age: 45,
+            books: [
+                { title: 'name of the wind', author: 'patrick rufuss' },
+                { title: 'the way of kings', author: 'brandon sanderson' },
+                { title: 'the final empire', author: 'brandon sanderson' },
+            ],
             x: 0,
             y: 0
         }
@@ -28,12 +30,6 @@ const app = Vue.createApp({
             this.x = e.offsetX
             this.y = e.offsetY
         }
-
-        // changeTitle(title) {
-        //     // this.title = 'Words of Radiance'
-        //     // title was passed in from the template
-        //     this.title = title
-        // }
     }
     
 })
