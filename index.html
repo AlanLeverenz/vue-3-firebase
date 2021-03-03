@@ -41,15 +41,17 @@
     </style>
 </head>
 <body>
-    <h1>Hello, Vue :)</h1>
+    <!-- <h1>Hello, Vue :)</h1> -->
 
     <div id="app">
         <!-- attribute binding -->
         <!-- <a :href="url">best website ever</a> -->
 
+        <!-- <p>{{ filteredBooks }}</p> -->
+
         <div v-if="showBooks">
             <ul>
-                <li v-for="book in books" @click="toggleFav(book)" :class = "{ fav: book.isFav }">
+                <li v-for="book in filteredBooks" @click="toggleFav(book)" :class = "{ fav: book.isFav }">
                     <img :src="book.img" :alt="book.title">
                     <h3>{{ book.title }}</h3>
                     <p>{{ book.author }}</p>
