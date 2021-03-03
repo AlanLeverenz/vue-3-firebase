@@ -6,6 +6,7 @@ const app = Vue.createApp({
     // data, functions
     data() {
         return {
+            url: 'http:www.thenetninja.co.uk',
             showBooks: true,
             books: [
                 { title: 'name of the wind', author: 'patrick rufuss' },
