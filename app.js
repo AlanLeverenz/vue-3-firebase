@@ -20,6 +20,7 @@ const app = Vue.createApp({
     methods: {
         toggleShowBooks() {
             this.showBooks = !this.showBooks
+            console.log(this.showBooks);
         },
         handleEvent(e, data) {
             console.log(e, e.type)
@@ -30,6 +31,10 @@ const app = Vue.createApp({
         handleMousemove(e) {
             this.x = e.offsetX
             this.y = e.offsetY
+        },
+        toggleFav(isFav) {
+            this.books.isFav = !isFav
+            console.log(this.books.isFav)
         }
     }
     
