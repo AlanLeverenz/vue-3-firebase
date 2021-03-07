@@ -1,5 +1,5 @@
 <template>
-    <div class="backdrop" @click="closeModal">
+    <div class="backdrop" @click.self="closeModal">
         <div class="modal" :class="{ sale: theme === 'sale' }">
             <h1>{{ header }}</h1>
             <p>{{ text }}</p>
@@ -9,6 +9,7 @@
 
 <script>
 export default {
+    // click.self only works on that element (not children)
     // these are the props his component accepts
     // they can be inserted in the template, passed in from the parent
     // class attributes can be bound with a boolean
