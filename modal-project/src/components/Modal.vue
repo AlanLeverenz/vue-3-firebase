@@ -1,5 +1,5 @@
 <template>
-    <div class="backdrop">
+    <div class="backdrop" @click="closeModal">
         <div class="modal" :class="{ sale: theme === 'sale' }">
             <h1>{{ header }}</h1>
             <p>{{ text }}</p>
@@ -12,7 +12,13 @@ export default {
     // these are the props his component accepts
     // they can be inserted in the template, passed in from the parent
     // class attributes can be bound with a boolean
-    props: ['header', 'text', 'theme']
+    props: ['header', 'text', 'theme'],
+    // custom event $emit so parent knows
+    methods: {
+        closeModal() {
+            this.$emit('close')
+        }
+    }
 }
 </script>
 

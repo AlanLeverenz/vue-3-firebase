@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
+    <p>Welcome</p>
       <div v-if="showModal">
-        <Modal :header="header" :text="text" theme="sale"/>
+        <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/>
     <!-- <input type="text" ref="name">
     <button @click="handleClick">click me</button> -->
       </div>
