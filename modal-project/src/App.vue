@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-        <Modal header="Sign up for the giveaway" text="Grab your ninja swag for half price!"/>
+        <Modal :header="header" :text="text"/>
     <!-- <input type="text" ref="name">
     <button @click="handleClick">click me</button> -->
   </div>
@@ -18,8 +18,11 @@ export default {
   //   HelloWorld
   },
   data() {
+    // data properties are defined and returned and bound the <Modal tag above as props
     return {
-      title: 'My First Vue App :)'
+      title: 'My First Vue App :)',
+      header: 'Sign up for the Giveaway!',
+      text: 'Grab your ninja swag for half price!'
     }
   },
   // $refs references an element by ref
