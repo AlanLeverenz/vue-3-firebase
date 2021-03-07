@@ -1,6 +1,6 @@
 <template>
     <div class="backdrop">
-        <div class="modal">
+        <div class="modal" :class="{ sale: theme === 'sale' }">
             <h1>{{ header }}</h1>
             <p>{{ text }}</p>
         </div>
@@ -11,7 +11,7 @@
 export default {
     // these are the props his component accepts
     // they can be inserted in the template, passed in from the parent
-    props: ['header', 'text']
+    props: ['header', 'text', 'theme']
 }
 </script>
 
@@ -38,6 +38,13 @@ export default {
     }
     .modal p {
         font-style: normal;
+    }
+    .modal.sale {
+        background: crimson;
+        color: white;
+    }
+    .modal.sale h1 {
+        color: white;
     }
 
 </style>
