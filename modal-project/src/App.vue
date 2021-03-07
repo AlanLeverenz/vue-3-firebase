@@ -1,19 +1,22 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <input type="text" ref="name">
-    <button @click="handleClick">click me</button>
+        <Modal header="Sign up for the giveaway" text="Grab your ninja swag for half price!"/>
+    <!-- <input type="text" ref="name">
+    <button @click="handleClick">click me</button> -->
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
+import Modal from './components/Modal.vue';
 
 export default {
   name: 'App',
-  // components: {
+  components: {
+    Modal
   //   HelloWorld
-  // }
+  },
   data() {
     return {
       title: 'My First Vue App :)'
