@@ -52,11 +52,29 @@ export default {
     .modal p {
         font-style: normal;
     }
+    .modal .actions {
+        text-align: center;
+        margin: 30px 0 10px 0;
+    }
+    .modal .actions a{
+        color: #333;
+        padding: 8px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        text-decoration: none;
+        margin: 10px
+    }
     .modal.sale {
         background: crimson;
         color: white;
     }
     .modal.sale h1 {
+        color: white;
+    }
+    .modal.sale .actions {
+        color: white;
+    }
+    .modal.sale .actions a{
         color: white;
     }
 
