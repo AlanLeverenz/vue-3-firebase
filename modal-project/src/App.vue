@@ -8,8 +8,9 @@
               <a href="#">Sign up now</a>
               <a href="#">More info</a>
             </template>
-            <h1>Ninja Giveaway!</h1>
-            <p>Grab your ninja swag for half price!</p>
+            <!-- This is default content for Modal -->
+            <!-- <h1>Ninja Giveaway!</h1>
+            <p>Grab your ninja swag for half price!</p> -->
           </Modal>
         <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/> -->
     <!-- <input type="text" ref="name">
