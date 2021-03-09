@@ -8,6 +8,10 @@
               <a href="#">Sign up now</a>
               <a href="#">More info</a>
             </template>
+            <template v-slot:links2>
+              <a href="#">Sign up later</a>
+              <a href="#">No more info</a>
+            </template>
             <!-- This is default content for Modal -->
             <h1>Ninja Giveaway!</h1>
             <p>Grab your ninja swag for half price!</p>
@@ -17,6 +21,7 @@
     <button @click="handleClick">click me</button> -->
       </div>
       <button @click.alt="toggleModal">open modal (alt)</button>
+      <button @click.alt="toggleModalTwo">open modal 2 (alt)</button>
   </div>
 </template>
 
