@@ -2,24 +2,25 @@
   <div>
     <h1>{{ title }}</h1>
     <p>Welcome</p>
-      <div v-if="showModal">
+      <teleport to="#modals" v-if="showModal">
           <Modal :header="header" :text="text" theme="sale" @close="toggleModal">
             <template v-slot:links>
               <a href="#">Sign up now</a>
               <a href="#">More info</a>
             </template>
           </Modal>
-      </div>
-      <div v-if="showModalTwo">
+      </teleport>
+      <teleport to="#modals" v-if="showModalTwo">
         <Modal theme="sale" @close="toggleModalTwo">
         <template v-slot:links2>
           <a href="#">Sign up later</a>
           <a href="#">No more info</a>
         </template>
+        <!-- these hard-coded elements go to default slot -->
         <h1>Tess Giveaway!</h1>
         <p>Grab your Tess swag at half price!</p>
         </Modal>
-      </div>
+      </teleport>
       <button @click.alt="toggleModal">open modal (alt)</button>
       <button @click="toggleModalTwo">open modal 2</button>
   </div>
@@ -67,7 +68,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, #modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
