@@ -8,10 +8,10 @@
               <a href="#">Sign up now</a>
               <a href="#">More info</a>
             </template>
-            <template v-slot:links2>
+            <!-- <template v-slot:links2>
               <a href="#">Sign up later</a>
               <a href="#">No more info</a>
-            </template>
+            </template> -->
             <!-- This is default content for Modal -->
             <h1>Ninja Giveaway!</h1>
             <p>Grab your ninja swag for half price!</p>
@@ -19,6 +19,17 @@
         <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/> -->
     <!-- <input type="text" ref="name">
     <button @click="handleClick">click me</button> -->
+      </div>
+      <div v-if="showModalTwo">
+        <Modal theme="sale" @close="toggleModalTwo">
+        <template v-slot:links2>
+          <a href="#">Sign up later</a>
+          <a href="#">No more info</a>
+        </template>
+        <!-- This is default content for Modal -->
+        <h1>Tess Giveaway!</h1>
+        <p>Grab your Tess swag at half price!</p>
+        </Modal>
       </div>
       <button @click.alt="toggleModal">open modal (alt)</button>
       <button @click.alt="toggleModalTwo">open modal 2 (alt)</button>
@@ -41,7 +52,8 @@ export default {
       title: 'My First Vue App :)',
       header: 'Sign up for the Giveaway!',
       text: 'Grab your ninja swag for half price!',
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
   // $refs references an element by ref
@@ -55,7 +67,11 @@ export default {
     // }
     toggleModal() {
       this.showModal = !this.showModal
-      console.log(this.showModal)
+      console.log(`1 = ${this.showModal}`)
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
+      console.log(`2 = ${this.showModalTwo}`)
     }
   }
 }
