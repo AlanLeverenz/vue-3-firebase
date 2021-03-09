@@ -8,17 +8,7 @@
               <a href="#">Sign up now</a>
               <a href="#">More info</a>
             </template>
-            <!-- <template v-slot:links2>
-              <a href="#">Sign up later</a>
-              <a href="#">No more info</a>
-            </template> -->
-            <!-- This is default content for Modal -->
-            <!-- <h1>Ninja Giveaway!</h1>
-            <p>Grab your ninja swag for half price!</p> -->
           </Modal>
-        <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal"/> -->
-    <!-- <input type="text" ref="name">
-    <button @click="handleClick">click me</button> -->
       </div>
       <div v-if="showModalTwo">
         <Modal theme="sale" @close="toggleModalTwo">
@@ -26,13 +16,12 @@
           <a href="#">Sign up later</a>
           <a href="#">No more info</a>
         </template>
-        <!-- This is default content for Modal -->
         <h1>Tess Giveaway!</h1>
         <p>Grab your Tess swag at half price!</p>
         </Modal>
       </div>
       <button @click.alt="toggleModal">open modal (alt)</button>
-      <button @click.alt="toggleModalTwo">open modal 2 (alt)</button>
+      <button @click="toggleModalTwo">open modal 2</button>
   </div>
 </template>
 
