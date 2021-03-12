@@ -1,13 +1,33 @@
 <template>
-  <h1>Ninja Reaction Timer</h1>
+  <div>
+    <h1>Ninja Reaction Timer</h1>
+    <button @click="start" :disabled="isPlaying">play</button>
+    <Block v-if="isPlaying" :delay="delay"/>
+  </div>
 </template>
 
 <script>
+// 'disabled' property is enabled by a boolean value for a data store element (isPlaying) 
+
+import Block from './components/Block.vue'
 
 export default {
   name: 'App',
-  components: {
-
+  components: { Block },
+  // data() is a function that adds to the store
+  // the delay property is bound with the Block component and is passed down as a prop
+  data() {
+    return {
+      isPlaying: false,
+      delay: null
+    }
+  },
+  // methods are objects that contain functions
+  methods: { 
+    start() {
+      this.delay = 2000 + Math.random() * 5000
+      this.isPlaying = true
+    }
   }
 }
 </script>
