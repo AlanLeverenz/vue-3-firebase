@@ -1,5 +1,5 @@
 <template>
-    <div class="block" v-if="showBlock">
+    <div class="block" v-if="showBlock" @click="stopTimer">
         click me
     </div>
 </template>
@@ -9,7 +9,9 @@ export default {
     props: ['delay'],
     data() {
         return {
-            showBlock: false
+            showBlock: false,
+            timer: null,
+            reactionTime: 0
         }
     },
     // mounted hook fires when component is mounted
@@ -17,9 +19,24 @@ export default {
         // console.log('component mounted')
         setTimeout(()=> {
             this.showBlock = true
+            // call method function to start timer
+            this.startTimer()
             // console.log(this.delay)
         }, this.delay)
     },
+    methods: {
+        startTimer() {
+            // timer updates reactionTime every 10 ms
+            this.timer = setInterval(()=> {
+                this.reactionTime += 10
+            }, 10)
+            },
+        stopTimer() {
+            // clearing the interval value stops the timer
+            clearInterval(this.timer)
+            console.log(this.reactionTime)
+        }
+    }
     // when data is changed, updated lifecycle happens
     // updated() {
     //     console.log('component updated')
