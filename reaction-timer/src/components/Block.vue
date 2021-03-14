@@ -20,8 +20,13 @@ export default {
             console.log(this.delay)
         }, this.delay)
     },
+    // when data is changed, updated lifecycle happens
     updated() {
         console.log('component updated')
+    },
+    // when page is changed, the previous is unmounted
+    unmounted() {
+        console.log('unmounted')
     }
 }
 </script>
