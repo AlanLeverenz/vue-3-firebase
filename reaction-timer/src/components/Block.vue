@@ -14,20 +14,20 @@ export default {
     },
     // mounted hook fires when component is mounted
     mounted() {
-        console.log('component mounted')
+        // console.log('component mounted')
         setTimeout(()=> {
             this.showBlock = true
-            console.log(this.delay)
+            // console.log(this.delay)
         }, this.delay)
     },
     // when data is changed, updated lifecycle happens
-    updated() {
-        console.log('component updated')
-    },
+    // updated() {
+    //     console.log('component updated')
+    // },
     // when page is changed, the previous is unmounted
-    unmounted() {
-        console.log('unmounted')
-    }
+    // unmounted() {
+    //     console.log('unmounted')
+    // }
 }
 </script>
 
