@@ -35,6 +35,7 @@ export default {
             // clearing the interval value stops the timer
             clearInterval(this.timer)
             console.log(this.reactionTime)
+            this.$emit('end', this.reactionTime)
         }
     }
     // when data is changed, updated lifecycle happens
