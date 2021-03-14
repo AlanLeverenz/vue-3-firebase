@@ -8,6 +8,7 @@
 
 <script>
 // 'disabled' property is enabled by a boolean value for a data store element (isPlaying) 
+// the delay property is bound with the Block component and is passed down as a prop
 
 import Block from './components/Block.vue'
 
@@ -15,7 +16,6 @@ export default {
   name: 'App',
   components: { Block },
   // data() is a function that adds to the store
-  // the delay property is bound with the Block component and is passed down as a prop
   data() {
     return {
       isPlaying: false,
