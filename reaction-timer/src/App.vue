@@ -3,7 +3,8 @@
     <h1>Ninja Reaction Timer</h1>
     <button @click="start" :disabled="isPlaying">play</button>
     <Block v-if="isPlaying" :delay="delay" @end="endgame" />
-    <p v-if="showResults">Reaction time: {{ score }} ms</p>
+    <!-- <p v-if="showResults">Reaction time: {{ score }} ms</p> -->
+    <Results v-if="showResults" :score="score"/>
   </div>
 </template>
 
@@ -12,10 +13,11 @@
 // the delay property is bound with the Block component and is passed down as a prop
 
 import Block from './components/Block.vue'
+import Results from './components/Results.vue'
 
 export default {
   name: 'App',
-  components: { Block },
+  components: { Block, Results },
   // data() is a function that adds to the store
   data() {
     return {
