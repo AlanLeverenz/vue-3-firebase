@@ -6,9 +6,16 @@
 
             <label>Email:</label>
             <input type="password" required v-model="password">
+
+            <label>Role:</label>
+            <select v-model="role">
+                <option value="developer">Web Developer</option>
+                <option value="designer">Web Designer</option>
+            </select>
         </form>
         <p>Email: {{ email }}</p>
         <p>Password: {{ password }}</p>
+        <p>Role: {{ role }}</p>
     </div>
 </template>
 
@@ -18,10 +25,12 @@ export default {
     // two-way data binding in v-form
     // input -> data(), data() -> input
     // data object values tracking form input
+    // v-model with select fields
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            role: 'designer'
         }
     }
 }
@@ -45,7 +54,7 @@ export default {
         letter-spacing: 1px;
         font-weight: bold;
     }
-    input {
+    input, select {
         display: block;
         padding: 10px 6px;
         width: 100%;
