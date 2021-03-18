@@ -13,22 +13,15 @@
                 <option value="designer">Web Designer</option>
             </select>
 
+            <label>Skills:</label>
+            <input type="text" v-model="tempSkill" @keyup="addSkill">
+            <div v-for="skill in skills" :key="skill" class="pill">
+                {{ skill }}
+            </div>
+
             <div class="terms">
                 <input v-model="terms" type="checkbox" required>
                 <label>Accept terms and conditions</label>
-            </div>
-
-            <div>
-                <input type="checkbox" value="Shaun" v-model="names">
-                <label>Shaun</label>
-            </div>
-            <div>
-                <input type="checkbox" value="Yoshi" v-model="names">
-                <label>Yoshi</label>
-            </div>
-            <div>
-                <input type="checkbox" value="Mario" v-model="names">
-                <label>Mario</label>
             </div>
 
         </form>
@@ -37,8 +30,6 @@
         <p>Password: {{ password }}</p>
         <p>Role: {{ role }}</p>
         <p>Terms accepted: {{ terms }}</p>
-        <p>Name: {{ names }}</p>
-
 
     </div>
 </template>
@@ -49,14 +40,26 @@ export default {
     // two-way data binding in v-form
     // input -> data(), data() -> input
     // data object values tracking form input
-    // v-model with select fields
+    // v-model with select fields, use common value to group
     data() {
         return {
             email: '',
             password: '',
             role: 'designer',
             terms: false,
-            names: []
+            tempSkill: '',
+            skills: []
+        }
+    },
+    methods: {
+        // to capture skill text
+        addSkill(e) {
+            if (e.key === ',' && this.tempSkill.slice(0,-1)) {
+                if (!this.skills.includes(this.tempSkill)) {
+                this.skills.push(this.tempSkill.slice(0,-1))
+                }
+                this.tempSkill = ''
+            }
         }
     }
 }
@@ -96,5 +99,17 @@ export default {
         margin: 0 10px 0 0;
         position: relative;
         top: 2px;
+    }
+    .pill {
+        display: inline-block;
+        margin: 20px 10px 0 0;
+        padding: 6px 12px;
+        background: #eee;
+        border-radius: 20px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: #777;
+        cursor: pointer;
     }
 </style>
