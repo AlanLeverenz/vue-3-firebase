@@ -15,7 +15,7 @@
 
             <label>Skills:</label>
             <input type="text" v-model="tempSkill" @keyup="addSkill">
-            <div v-for="skill in skills" :key="skill" class="pill">
+            <div v-for="skill in skills" :key="skill" class="pill" @click="deleteSkill(skills,skill)">
                 {{ skill }}
             </div>
 
@@ -60,6 +60,16 @@ export default {
                 }
                 this.tempSkill = ''
             }
+        },
+        deleteSkill(skills,skill) {
+            console.log(skills)
+            console.log(skill)
+            const remove = (element) => element === skill;
+            console.log(`${skills.findIndex(remove)}`)
+            const index = skills.findIndex(remove)
+            skills.slice(index,1)
+            console.log(skills)
+            // skills.slice((skills.findIndex(remove)),1)
         }
     }
 }
