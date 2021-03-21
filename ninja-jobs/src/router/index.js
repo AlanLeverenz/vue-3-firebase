@@ -24,7 +24,8 @@ const routes = [
     // route parameter
     path: '/jobs/:id',
     name: 'JobDetails',
-    component: JobDetails
+    component: JobDetails,
+    props: true
   }
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
