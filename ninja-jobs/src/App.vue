@@ -4,6 +4,7 @@
       <!-- router-link intercepts requests to network -->
       <router-link to="/">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link>
+      <router-link :to="{ name: 'Jobs' }">Jobs</router-link>
       <!-- data bind the path using the index.js route's object name -->
     </div>
     <!-- router components are injected below in router-view -->
