@@ -9,6 +9,7 @@
 </template>
 
 <script>
+// exports jobs store for template to use
 export default {
     data() {
         return {
