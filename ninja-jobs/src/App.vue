@@ -1,8 +1,10 @@
 <template>
   <div>
     <div id="nav">
+      <!-- router-link intercepts requests to network -->
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link :to="{ name: 'About' }">About</router-link>
+      <!-- data bind the path using the index.js route's object name -->
     </div>
     <!-- router components are injected below in router-view -->
     <router-view/>
@@ -25,9 +27,14 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
-}
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 4px;
 
+}
+/* built-in class for vue router-links */
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
+  background: crimson;
 }
 </style>
