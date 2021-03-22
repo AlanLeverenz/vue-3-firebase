@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    // props flow down to this component, allowed in index.js
+    // props flow down from App to this component, defined in index.js
     // if passed as a prop, then no need for data() store to return it
     props: ['id'],
     // id is returned to the store and exported for the template
