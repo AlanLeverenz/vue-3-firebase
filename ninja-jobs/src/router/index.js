@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+// lazy loading using code splitting
+// import About from '../views/About.vue'
 import NotFound from '../views/NotFound.vue'
 import Jobs from '../views/jobs/Jobs.vue'
 import JobDetails from '../views/jobs/JobDetails.vue'
@@ -14,7 +15,8 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: About
+    // lazy loading by code splitting a page
+    component: () => import('../views/About.vue'),
   }, 
   {
     path: '/jobs',
