@@ -16,16 +16,20 @@
 // exports jobs store for template to use
 export default {
     data() {
+        // jobs object is filled with fetch data
         return {
-            jobs: [
-                { title: 'Ninja UX Designer', id: 1, details: 'lorem'},
-                { title: 'Ninja Web Designer', id: 2, details: 'lorem'},
-                { title: 'Ninja Vue Designer', id: 3, details: 'lorem'},
-
-            ]
+            jobs: []
         }
+    },
+    // when component mounts fetch happens
+    mounted() {
+        fetch('http://localhost:3000/jobs')
+                .then((res) => res.json())
+                .then((data) => this.jobs = data)
+                .catch(err => console.log(err.message))
     }
 }
+
 </script>
 
 <style scoped>
