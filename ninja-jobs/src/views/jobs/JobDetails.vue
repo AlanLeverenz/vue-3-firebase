@@ -1,8 +1,12 @@
 <template>
-    <div>
+<!-- need if conditional because job data is null before page mounts and data is fetched -->
+    <div v-if="job ">
         <h1>{{ job.title }}</h1>
         <p>The job id is {{ id }}</p>
         <p>{{ job.details }}</p>
+    </div>
+    <div v-else>
+        <p>Loading job details...</p>
     </div>
 </template>
 
