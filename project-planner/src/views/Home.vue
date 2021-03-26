@@ -3,8 +3,10 @@
     <div v-if="projects.length">
       <!-- binding key data -->
       <!-- the object to render must be inside the div v-for element -->
+      <!-- the div defines the scope of the project items -->
       <div v-for="project in projects" :key="project.id">
-        <p>{{ project.title }}</p>
+        <!-- cycling through each project by binding to each one -->
+        <SingleProject :project="project"/>
       </div>
     </div>
     <div v-else>Houston, we've got a problem</div>
@@ -13,11 +15,12 @@
 
 <script>
 // @ is an alias to /src
+import SingleProject from '../components/SingleProject.vue'
 
 export default {
   name: 'Home',
   components: {
-
+    SingleProject
   },
   // data is returning project objects from db.json
   data() {
