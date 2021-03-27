@@ -6,7 +6,8 @@
       <!-- the div defines the scope of the project items -->
       <div v-for="project in projects" :key="project.id">
         <!-- cycling through each project by binding to each one -->
-        <SingleProject :project="project"/>
+        <!-- @delete is the $emit name, handleDelete is local function -->
+        <SingleProject :project="project" @delete="handleDelete"/>
       </div>
     </div>
     <div v-else>Houston, we've got a problem</div>
@@ -35,6 +36,14 @@ export default {
     .then(res => res.json())
     .then(data => this.projects = data)
     .catch(err => console.log(err.message))
+  },
+  methods: {
+    handleDelete(id) {
+      // filters out the deleted project
+      this.projects = this.projects.filter((project) => {
+        return project.id !== id
+      })
+    }
   }
 }
 </script>
