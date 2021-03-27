@@ -1,7 +1,13 @@
 <template>
     <div class="project">
         <div class="actions">
+            <!-- an inline function -->
             <h3 @click="showDetails = !showDetails">{{ project.title }}</h3>
+            <div class="icons">
+                <span class="material-icons">edit</span>
+                <span class="material-icons">delete</span>
+                <span class="material-icons">done</span>
+            </div>
         </div>
         <div v-if="showDetails" class="details">
             <p>{{ project.details }}</p>
@@ -11,9 +17,9 @@
 
 <script>
 export default {
-    // project needs to be passed as a prop to be rendered here 
+    // project needs to be passed in as a prop to be rendered here 
     props: ['project'],
-    // data is used in this component to set default for details
+    // data (store) is used in this component to set default for details
     data() {
         return {
             showDetails: false
@@ -33,5 +39,20 @@ export default {
     }
     h3 {
         cursor: pointer;
+    }
+    /* flex applies to child elements */
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .material-icons {
+        font-size: 24px;
+        margin-left: 10px;
+        color: #bbb;
+        cursor: pointer;
+    }
+    .material-icons:hover {
+        color: #777;
     }
 </style>
