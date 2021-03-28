@@ -4,13 +4,19 @@
       "id": 1,
       "title": "Create a new homepage banner",
       "details": "Lorem ipsum",
-      "complete": false
+      "complete": true
     },
     {
       "id": 2,
       "title": "Make marketing email",
       "details": "Lorem ipsum",
       "complete": true
+    },
+    {
+      "title": "Design a new website",
+      "details": "Make it a good one.",
+      "complete": true,
+      "id": 3
     }
   ]
 }
