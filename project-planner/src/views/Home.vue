@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
     // mounted() is a "hook" lifecycle
-    // these are asynchronous requests with promises returned (.then)
+    // these are asynchronous requests with promises returned (.then.catch)
     fetch('http://localhost:3000/projects')
     .then(res => res.json())
     .then(data => this.projects = data)
@@ -39,15 +39,16 @@ export default {
   },
   methods: {
     handleDelete(id) {
-      // filters out the deleted project
+      // filters out the deleted project and redefines local projects
       this.projects = this.projects.filter((project) => {
+        // return based on boolean statement
         return project.id !== id
       })
     },
     handleComplete(id) {
-      // updates complete object in project that was emitted
+      // finds and updates complete object in project that was emitted
       let p = this.projects.find(project => {
-        return project.id === id // boolean statement true or false to store project inj p
+        return project.id === id // boolean statement true or false to store project in 'p'
       })
       p.complete = !p.complete
     }
