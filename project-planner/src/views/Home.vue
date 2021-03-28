@@ -7,7 +7,7 @@
       <div v-for="project in projects" :key="project.id">
         <!-- cycling through each project by binding to each one -->
         <!-- @delete is the $emit name, handleDelete is local function -->
-        <SingleProject :project="project" @delete="handleDelete"/>
+        <SingleProject :project="project" @delete="handleDelete" @complete="handleComplete"/>
       </div>
     </div>
     <div v-else>Houston, we've got a problem</div>
@@ -43,6 +43,13 @@ export default {
       this.projects = this.projects.filter((project) => {
         return project.id !== id
       })
+    },
+    handleComplete(id) {
+      // updates complete object in project that was emitted
+      let p = this.projects.find(project => {
+        return project.id === id // boolean statement true or false to store project inj p
+      })
+      p.complete = !p.complete
     }
   }
 }
