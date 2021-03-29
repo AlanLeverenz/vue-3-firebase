@@ -1,7 +1,18 @@
 <template>
-
-  <router-view/>
+  <div>
+    <Navbar />
+    <!-- router-view displays router-links from the components -->
+    <router-view/>
+  </div>
 </template>
+
+<script>
+  import Navbar from './components/Navbar.vue'
+
+export default {
+  components: { Navbar }
+}
+</script>
 
 <style>
 body {
