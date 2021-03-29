@@ -37,9 +37,7 @@ export default {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify( { title: this.title, details: this.details })
-            // }).then(() => {
-            //     // updates Home page
-            //     this.$emit('update', this.project.id)
+                // updates json-server, which is mounted in Home page
             }).then(() => {
                 // resets to the Home page
                this.$router.push('/') 

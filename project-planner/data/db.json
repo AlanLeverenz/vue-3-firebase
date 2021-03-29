@@ -2,8 +2,8 @@
   "projects": [
     {
       "id": 1,
-      "title": "Create a new homepage banner",
-      "details": "Say hello",
+      "title": "Create a new homepage banner for client",
+      "details": "must be 2 x 4 inches",
       "complete": true
     },
     {
