@@ -1,5 +1,8 @@
 <template>
   <div class="home">
+    <!-- $event 'by' value is passed to 'current' data object, emitted when the filter button is clicked (all, completed, ongoing) -->
+    <!-- data binding current with the child component FilterNav -->
+    <FilterNav @filterChange="current = $event" :current="current" />
     <div v-if="projects.length">
       <!-- binding key data -->
       <!-- the object to render must be inside the div v-for element -->
@@ -17,16 +20,17 @@
 <script>
 // @ is an alias to /src
 import SingleProject from '../components/SingleProject.vue'
+import FilterNav from '../components/FilterNav.vue'
 
 export default {
+  // exporting Home component by name, with its components, data store, and methods.
   name: 'Home',
-  components: {
-    SingleProject
-  },
+  components: { SingleProject, FilterNav },
   // data is returning project objects from db.json
   data() {
     return {
-      projects: []
+      projects: [],
+      current: 'all'
     }
   },
   mounted() {
