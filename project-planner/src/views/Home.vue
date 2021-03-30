@@ -7,7 +7,8 @@
       <!-- binding key data -->
       <!-- the object to render must be inside the div v-for element -->
       <!-- the div defines the scope of the project items -->
-      <div v-for="project in projects" :key="project.id">
+      <!-- filteredProjects is a computed value -->
+      <div v-for="project in filteredProjects" :key="project.id">
         <!-- cycling through each project by binding to each one -->
         <!-- @delete is the $emit name, handleDelete is local function -->
         <SingleProject :project="project" @delete="handleDelete" @complete="handleComplete"/>
@@ -19,6 +20,12 @@
 
 <script>
 // @ is an alias to /src
+
+// challenge
+//  - when the filter changes (current), only show those projects
+//  - e.g. if we click 'completed' only show the completed projects
+//  - use a computed property called filteredProjects
+
 import SingleProject from '../components/SingleProject.vue'
 import FilterNav from '../components/FilterNav.vue'
 
@@ -55,6 +62,20 @@ export default {
         return project.id === id // boolean statement true or false to store project in 'p'
       })
       p.complete = !p.complete
+    }
+  },
+  computed: {
+    filteredProjects(current) {
+      if (this.current === 'completed') {
+        // filter function tests if projects are complete
+        return this.projects.filter(project => project.complete)
+      }
+      if (this.current === 'ongoing') {
+        // filter function tests if projects are not complete
+        return this.projects.filter(project => !project.complete)
+      }
+      // if none above found anything, then all
+      return this.projects
     }
   }
 }

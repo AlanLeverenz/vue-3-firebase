@@ -15,7 +15,7 @@
     {
       "title": "Design a new website",
       "details": "Make it a good one.",
-      "complete": true,
+      "complete": false,
       "id": 3
     }
   ]
