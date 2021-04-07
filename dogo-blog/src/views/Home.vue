@@ -9,13 +9,21 @@
 
 <script>
 
-import { ref, computed } from 'vue'
+import { ref, computed, watch, watchEffect } from 'vue'
 
 export default {
   name: 'Home',
   setup() {
     const search = ref('')
     const names = ref(['mario', 'yoshi', 'luigi', 'toad', 'bowser', 'koopa', 'peach'])
+
+    watch(search, () => {
+      console.log('watch function ran')
+    })
+
+    watchEffect(() => {
+      console.log('watchEffect function ran', search.value)
+    })
 
   const matchingNames = computed(() => {
     // need .value because names is a ref
