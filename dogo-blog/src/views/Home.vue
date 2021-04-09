@@ -1,9 +1,12 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList v-if="showPosts" :posts="posts"/>
-    <button @click="showPosts = !showPosts">toggle posts</button>
-    <button @click="posts.pop()">delete a post</button>
+    <div v-if="error">{{ error }}</div>
+    <!-- bind posts data to setup const (reactive) -->
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>Loading...</div>
   </div>
 </template>
 
@@ -15,14 +18,31 @@ export default {
   name: 'Home',
   components: { PostList },
   setup() {
-    const posts = ref([
-      { title: 'welcome to the blog', body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic nesciunt dolorum quis iure molestiae reiciendis accusantium corporis aliquam doloribus odit sed cum asperiores, laborum est aspernatur magnam earum quia. Doloremque.', id: 1 },
-      { title: 'top 5 css tips', body: 'lorem ipsum', id: 2 }
-    ])
-    const showPosts = ref(true)
+    // create const variables that will get values in the lifecycle
+    const posts = ref([])
+    const error = ref(null)
 
-  // return the object name for the template to render
-    return { posts, showPosts }
+    const load = async () => {
+      try {
+        let data = await fetch('http://localhost:3000/posts')
+        if (!data.ok) {
+          throw Error('no data available')
+        }
+        posts.value = await data.json()
+      }
+      // gets Error from above
+      catch (err) {
+        // use value property to update the error
+        error.value = err.message
+        console.log(error.value)
+      }
+    }
+
+    // call load function to fetch data
+    load()
+
+  // must return the objects for the template to render
+    return { posts, error }
   }
 }
 </script>
