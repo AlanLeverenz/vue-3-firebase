@@ -12,7 +12,7 @@ import { onMounted, onUnmounted, onUpdated } from '@vue/runtime-core'
 import SinglePost from './SinglePost.vue'
 
 export default {
-    // post sent down as prop from Home
+    // posts sent down as prop from Home
     props: ['posts'],
     // declare SinglePost as a component
     components: { SinglePost },

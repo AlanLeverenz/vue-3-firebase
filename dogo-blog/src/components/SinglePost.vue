@@ -1,6 +1,9 @@
 <template>
     <div class="post">
-        <h3>{{ post.title }}</h3>
+        <!-- to navigate to the Details view -->
+        <router-link :to="{ name: 'Details', params: { id: post.id }}">
+            <h3>{{ post.title }}</h3>
+        </router-link>
         <p>{{ snippet }}</p>
         <span v-for="tag in post.tags" :key="tag">
             #{{ tag }}
@@ -9,7 +12,8 @@
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core'
+import { computed } from 'vue'
+
 export default {
     // accept props from PostList to use in template
     props: ['post'],
