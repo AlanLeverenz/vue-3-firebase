@@ -1,18 +1,24 @@
 import { ref } from 'vue'
 
 const getPost = (id) => {
-    // pass in the id to make it the param for the route
+    // pass in the id to make the param in the route
     // create const variables that will get values in the lifecycle
     const post = ref([null])
     const error = ref(null)
 
     const load = async () => {
         try {
-        let data = await fetch('http://localhost:3000/posts/' + id)
-        if (!data.ok) {
-            throw Error('that post does not exist')
-        }
-        post.value = await data.json()
+            // simulate delay
+            await new Promise(resolve => {
+                setTimeout(resolve, 2000)
+            })
+
+            let data = await fetch('http://localhost:3000/posts/' + id)
+            if (!data.ok) {
+                throw Error('that post does not exist')
+            }
+            // post is a ref so assign data to its value
+            post.value = await data.json()
         }
         // gets Error from above
         catch (err) {
