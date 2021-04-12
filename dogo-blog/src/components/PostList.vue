@@ -18,13 +18,13 @@ export default {
     components: { SinglePost },
     // include props in setup
     setup(props) {
-        onMounted(() => console.log('component mounted'))
-        onUnmounted(() => console.log('component unmounted'))
-        onUpdated(() => console.log('component updated'))
+        // onMounted(() => console.log('component mounted'))
+        // onUnmounted(() => console.log('component unmounted'))
+        // onUpdated(() => console.log('component updated'))
     },
-    mounted() {
-        console.log('mounted using options api')
-    }
+    // mounted() {
+    //     console.log('mounted using options api')
+    // }
 }
 </script>
 

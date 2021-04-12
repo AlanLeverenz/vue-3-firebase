@@ -2,12 +2,6 @@
   <div class="spin"></div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style>
     .spin {
         display: block;
@@ -21,6 +15,6 @@ export default {
     }
 
     @keyframes spin {
-        to { transform: rotateZ(360deg)}
+        to { -webkit-transform: rotateZ(360deg); }
     }
 </style>
