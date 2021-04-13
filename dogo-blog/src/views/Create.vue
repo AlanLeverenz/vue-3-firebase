@@ -18,6 +18,12 @@
 </template>
 
 <script>
+// challenge
+// - add a submit event handler to the form
+// - inside the handler, make a POST request to add a new post to db.json
+// - try using async & await to make the request
+// - the endpoint is /posts to add a new post
+
 // use ref for reactive v-model values
 import { ref } from 'vue'
 export default {
