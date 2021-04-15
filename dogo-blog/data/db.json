@@ -19,14 +19,6 @@
         "webdev",
         "coding"
       ]
-    },
-    {
-      "title": "my stuff",
-      "body": "hello there",
-      "tags": [
-        "news"
-      ],
-      "id": 3
     }
   ]
 }

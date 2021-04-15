@@ -28,6 +28,7 @@
 // use ref for reactive v-model values
 import { ref } from 'vue'
 export default {
+    // setup can include consts for objects, functions, and returns them to be used in template
     setup() {
         const title = ref('')
         const body = ref('')
@@ -83,7 +84,7 @@ export default {
   label {
     display: inline-block;
     margin-top: 30px;
-    position: relative;
+    position: relative; 
     font-size: 20px;
     color: white;
     margin-bottom: 10px;
