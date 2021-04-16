@@ -15,6 +15,7 @@
 // import composable to obtain post data
 import getPost from '../composables/getPost'
 import Spinner from '../components/Spinner.vue'
+import { useRoute } from 'vue-router'
 
 export default {
     props: ['id'],
@@ -22,7 +23,12 @@ export default {
     
     // setup takes in props to get its id
     setup(props) {
-        const { post, error, load } = getPost(props.id)
+        // to get route information: params, path, query, etc.
+        const route = useRoute()
+        console.log(route)
+
+        // const { post, error, load } = getPost(props.id)
+        const { post, error, load } = getPost(route.params.id)
 
         load()
 
