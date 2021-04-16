@@ -27,6 +27,8 @@
 
 // use ref for reactive v-model values
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default {
     // setup can include consts for objects, functions, and returns them to be used in template
     setup() {
@@ -34,6 +36,11 @@ export default {
         const body = ref('')
         const tag = ref('')
         const tags = ref([])
+
+        const router = useRouter()
+        // router.go(-1)
+        // router.go(1)
+
 
         const handleKeydown = () => {
             if (!tags.value.includes(tag.value)) {
@@ -56,6 +63,8 @@ export default {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(post)
             })
+            // can push a view into the browser
+            router.push({ name: 'Home' })
         }
 
         return { title, body, handleKeydown, tags, tag, handleSubmit }
