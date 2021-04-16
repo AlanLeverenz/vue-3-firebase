@@ -1,6 +1,12 @@
 <template>
     <div class="tag">
-
+        <div v-if="error">{{ error }}</div>
+        <!-- bind posts data to setup const (reactive) -->
+        <div v-if="posts.length">
+            <!-- binding posts to the filtered postsWithTag -->
+            <PostList :posts="postsWithTag" />
+        </div>
+        <div v-else><Spinner /></div>
     </div>
 </template>
 
@@ -13,10 +19,30 @@
 // - use the PostList component to output the required posts
 // - show the spinner until the data is loaded, and error if there is one
 
+import PostList from '../components/PostList.vue'
+import getPosts from '../composables/getPosts'
+import Spinner from '../components/Spinner.vue'
+import { useRoute } from 'vue-router'
+import { computed } from '@vue/runtime-core'
+
 export default {
+    components: { PostList, Spinner },
+
     setup() {
-        
-    },
+        const route = useRoute()
+        // get objects from getPosts composable
+        const { posts, error, load } = getPosts()
+
+        // calls load function imported from getPosts
+        load()
+
+        const postsWithTag = computed(() => {
+            return posts.value.filter((post) => post.tags.includes(route.params.tag))
+        })
+
+  // must return the objects for the template to render
+    return { posts, error, postsWithTag }
+  }
 }
 </script>
 
