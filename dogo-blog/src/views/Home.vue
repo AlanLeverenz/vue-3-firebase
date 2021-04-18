@@ -5,6 +5,7 @@
     <!-- bind posts data to setup const (reactive) -->
     <div v-if="posts.length">
       <PostList :posts="posts" />
+      <TagCloud :posts="posts" />
     </div>
     <div v-else><Spinner /></div>
   </div>
@@ -12,12 +13,14 @@
 
 <script>
 import PostList from '../components/PostList.vue'
+import TagCloud from '../components/TagCloud.vue'
 import getPosts from '../composables/getPosts'
 import Spinner from '../components/Spinner.vue'
 
 export default {
   name: 'Home',
-  components: { PostList, Spinner },
+  // need to register component objects
+  components: { PostList, Spinner, TagCloud },
   setup() {
     const { posts, error, load } = getPosts()
 
