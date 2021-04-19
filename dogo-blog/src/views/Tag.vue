@@ -2,9 +2,10 @@
     <div class="tag">
         <div v-if="error">{{ error }}</div>
         <!-- bind posts data to setup const (reactive) -->
-        <div v-if="posts.length">
+        <div v-if="posts.length" class="layout">
             <!-- binding posts to the filtered postsWithTag -->
             <PostList :posts="postsWithTag" />
+            <TagCloud :posts="posts" />
         </div>
         <div v-else><Spinner /></div>
     </div>
@@ -20,13 +21,14 @@
 // - show the spinner until the data is loaded, and error if there is one
 
 import PostList from '../components/PostList.vue'
+import TagCloud from '../components/TagCloud.vue'
 import getPosts from '../composables/getPosts'
 import Spinner from '../components/Spinner.vue'
 import { useRoute } from 'vue-router'
 import { computed } from '@vue/runtime-core'
 
 export default {
-    components: { PostList, Spinner },
+    components: { PostList, Spinner, TagCloud },
 
     setup() {
         const route = useRoute()
