@@ -15,7 +15,7 @@ const getPost = (id) => {
 
             let data = await fetch('http://localhost:3000/posts/' + id)
             if (!data.ok) {
-                throw Error('that post does not exist')
+                throw Error('That post does not exist')
             }
             // post is a ref so assign data to its value
             post.value = await data.json()

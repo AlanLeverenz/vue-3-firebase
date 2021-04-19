@@ -17,11 +17,11 @@ export default {
     // declare SinglePost as a component
     components: { SinglePost },
     // include props in setup
-    setup(props) {
+    setup() {
         // onMounted(() => console.log('component mounted'))
         // onUnmounted(() => console.log('component unmounted'))
         // onUpdated(() => console.log('component updated'))
-    },
+    }
     // mounted() {
     //     console.log('mounted using options api')
     // }
