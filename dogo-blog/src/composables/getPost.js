@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import { projectFirestore } from '../firebase/config'
 
 const getPost = (id) => {
     // pass in the id to make the param in the route
@@ -8,17 +9,10 @@ const getPost = (id) => {
 
     const load = async () => {
         try {
-            // // simulate delay
-            // await new Promise(resolve => {
-            //     setTimeout(resolve, 1000)
-            // })
-
-            let data = await fetch('http://localhost:3000/posts/' + id)
-            if (!data.ok) {
-                throw Error('That post does not exist')
-            }
-            // post is a ref so you must assign data to its value
-            post.value = await data.json()
+            let res = await projectFirestore.collection('posts').doc(id).get()
+            
+            post.value = { ...res.data(), id: res.id }
+            console.log(post.value)
         }
         // gets Error from above
         catch (err) {

@@ -8,7 +8,10 @@ const getPosts = () => {
 
     const load = async () => {
         try {
-            const res = await projectFirestore.collection('posts').get()
+            let res = await projectFirestore.collection('posts').get()
+            if(!res.exists) {
+                throw Error('That post does not exist')
+            }
 
             posts.value = res.docs.map(doc => {
                 console.log(doc.data()) // data() is method that extracts data from the doc
