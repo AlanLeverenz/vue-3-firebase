@@ -17,7 +17,7 @@ const getPost = (id) => {
             if (!data.ok) {
                 throw Error('That post does not exist')
             }
-            // post is a ref so assign data to its value
+            // post is a ref so you must assign data to its value
             post.value = await data.json()
         }
         // gets Error from above
