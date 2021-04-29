@@ -28,6 +28,7 @@
 // use ref for reactive v-model values
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { projectFirestore } from '../firebase/config'
 
 export default {
     // setup can include consts for objects, functions, and returns them to be used in template
@@ -58,11 +59,9 @@ export default {
                 tags: tags.value
             }
 
-            await fetch('http://localhost:3000/posts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(post)
-            })
+            const res = await projectFirestore.collection('posts').add(post)
+            // console.log(res)
+
             // can push a view into the browser
             router.push({ name: 'Home' })
         }
