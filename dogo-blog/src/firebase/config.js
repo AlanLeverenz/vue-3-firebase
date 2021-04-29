@@ -32,9 +32,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 // init firestore service
-const projectFirestore = firebase.firestore();
+const projectFirestore = firebase.firestore()
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { projectFirestore }
+// export firestore
+export { projectFirestore, timestamp }
 
 // const apiKey = keys.firebaseApiKey,
 // const authDomain = keys.firebaseAuthDomain,

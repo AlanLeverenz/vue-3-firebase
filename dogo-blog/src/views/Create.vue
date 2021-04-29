@@ -28,7 +28,7 @@
 // use ref for reactive v-model values
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { projectFirestore } from '../firebase/config'
+import { projectFirestore, timestamp } from '../firebase/config'
 
 export default {
     // setup can include consts for objects, functions, and returns them to be used in template
@@ -51,22 +51,18 @@ export default {
             tag.value = ''
         }
 
-        const handleSubmit = async () => {
-            // create const with ref object values
-            const post = {
-                title: title.value,
-                body: body.value,
-                tags: tags.value
-            }
-
-            const res = await projectFirestore.collection('posts').add(post)
-            // console.log(res)
-
-            // can push a view into the browser
-            router.push({ name: 'Home' })
-        }
-
-        return { title, body, handleKeydown, tags, tag, handleSubmit }
+    const handleSubmit = async () => {
+      const post = {
+        title: title.value,
+        body: body.value,
+        tags: tags.value,
+        createdAt: timestamp()
+      }
+      const res = await projectFirestore.collection('posts').add(post)
+      // console.log(res) // can see the id and path of doc created
+      router.push({ name: 'Home' })
+    }
+    return { body, title, tags, tag, handleKeydown, handleSubmit }
     }
 
 }
