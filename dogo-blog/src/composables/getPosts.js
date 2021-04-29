@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { projectFirestore } from '../firebase/config' // interacts with Firebase data
+import { projectFirestore, timestamp } from '../firebase/config' // interacts with Firebase data
 
 const getPosts = () => {
     // create const variables that will get values in the lifecycle
@@ -8,7 +8,10 @@ const getPosts = () => {
 
     const load = async () => {
         try {
-            let res = await projectFirestore.collection('posts').get()
+            let res = await projectFirestore
+            .collection('posts')
+            .orderBy('createdAt', 'desc')
+            .get()
 
             posts.value = res.docs.map(doc => {
                 console.log(doc.data()) // data() is method that extracts data from the doc
