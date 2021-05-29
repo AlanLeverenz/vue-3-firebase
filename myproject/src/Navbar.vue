@@ -1,5 +1,6 @@
 <template>
     <nav>
+        <h2>Menu</h2>
         <ul>
             <li><a href=""></a>Home</li>
             <li><a href=""></a>About</li>
