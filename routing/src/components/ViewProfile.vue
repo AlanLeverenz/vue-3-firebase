@@ -11,6 +11,15 @@ export default {
     return {
       userId: this.$route.params.user_id
     }
+  },
+  methods: {
+    updateId(){
+      this.userId = this.$route.params.user_id
+    }
+  },
+  // watch has Vue monitor changes, which causes an update
+  watch: {
+    $route: 'updateId'
   }
 }
 </script>
