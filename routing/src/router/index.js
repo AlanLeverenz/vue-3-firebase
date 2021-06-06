@@ -7,6 +7,8 @@ import ViewProfile from '@/components/ViewProfile'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history', // to avoid # symbol in web address
+  // not great for other servers to handle
   routes: [
     {
       path: '/',
