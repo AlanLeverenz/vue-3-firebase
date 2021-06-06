@@ -14,7 +14,9 @@
       </ul>
       <h2>Navigation Controls</h2>
       <ul>
+        <li><button @click="goBack">Go Back</button></li>
         <li><button @click="goHome">Redirect to Home</button></li>
+        <li><button @click="goForward">Go Forward</button></li>
       </ul>
   </nav>
 </template>
@@ -29,9 +31,15 @@ export default {
   },
   methods: {
     goHome() { 
-      // $router refers to history of routes
+      // $router keeps track of navigation history
       this.$router.push({ name: 'Home' })
-    }
+    },
+    goForward() {
+      this.$router.go(1)
+    },
+    goBack() {
+      this.$router.go(-1)
+    },
   }
 }
 </script>
