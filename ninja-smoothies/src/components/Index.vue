@@ -15,8 +15,8 @@
 </template>
 
 <script>
-// import db from '@/firebase/init'
-import { projectFirestore, timestamp } from '/@firebase/init'
+import db from '@/firebase/init'
+// import { projectFirestore, timestamp } from '/@firebase/init'
 
 export default {
   name: 'Index',
@@ -34,7 +34,7 @@ export default {
   },
   created() {
     // fetch data from the firestore
-    projectFirestore.collection('smoothies').get()
+    db.collection('smoothies').get()
     .then(snapshot => {
       snapshot.forEach(doc => {
         console.log(doc)
