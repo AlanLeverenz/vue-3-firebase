@@ -1,5 +1,5 @@
 // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
   
   import firebase from 'firebase/app'
   import 'firebase/firestore'
@@ -20,18 +20,3 @@ firebaseApp.firestore().settings({timestampsInSnapshots: true })
 // export firestore database
 export default firebaseApp.firestore()
 
-// ================ from dogo-blog
-
-// // init firebase
-// firebase.initializeApp(firebaseConfig)
-
-// // init firestore service
-// const projectFirestore = firebase.firestore()
-// const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-
-// // export firestore
-// export { projectFirestore, timestamp }
-
-
-
-// firebase.analytics();
