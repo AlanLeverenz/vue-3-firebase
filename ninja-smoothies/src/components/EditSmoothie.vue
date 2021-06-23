@@ -35,6 +35,25 @@ export default {
       feedback: null
     }
   },
+  methods: {
+    EditSmoothie(){
+      console.log(this.smoothie.title, this.smoothie.ingredients)
+    },
+    addIng(another) {
+      if(this.another) {
+        this.smoothie.ingredients.push(this.another)
+        this.another = null
+        this.feedback = null
+      } else {
+        this.feedback = "You must enter a value to add an ingredient"
+      }
+    },
+    deleteIng(ing) {
+      this.smoothie.ingredients = this.smoothie.ingredients.filter(ingredient => {
+        return ingredient != ing 
+      })
+    }
+  },
   // created by not yet rendered to the DOM
   created() {
     let ref = db.collection('smoothies').where('slug', '==', this.$route.params.smoothie_slug)
