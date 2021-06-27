@@ -5,10 +5,10 @@
     <div class="card">
       <div class="card-content">
         <ul class="messages">
-          <li>
-            <span class="teal-text">Name</span>
-            <span class="grey-text text-darken-3 message">message</span>
-            <span class="grey-text time">time</span>
+          <li v-for="message in messages" :key="message.id">
+            <span class="teal-text">{{ message.name }}</span>
+            <span class="grey-text text-darken-3 message">{{ message.content }}</span>
+            <span class="grey-text time">{{ message.timestamp }}</span>
           </li>
         </ul>
       </div>
@@ -22,6 +22,8 @@
 
 <script>
 import NewMessage from '@/components/NewMessage'
+import db from '@/firebase/init'
+
 export default {
   name: 'Chat',
   props: ['name'],
@@ -30,8 +32,26 @@ export default {
   },
   data() {
     return {
-
+      messages: []
     }
+  },
+  created() {
+    let ref = db.collection('messages').orderBy('timestamp')
+    // listens to whatever changes occur in the firestore db
+    ref.onSnapshot(snapshot => {
+      // docChanges() is a function in Firebase 5+
+      snapshot.docChanges().forEach(change => {
+        if(change.type == 'added'){
+          let doc = change.doc
+          this.messages.push({
+            id: doc.id,
+            name: doc.data().name,
+            content: doc.data().content,
+            timestamp: doc.data().timestamp
+          })
+        }
+      })
+    })
   }
 }
 </script>
