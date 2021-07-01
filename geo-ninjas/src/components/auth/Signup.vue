@@ -48,7 +48,7 @@ export default {
             lower: true
           })
           // get a reference to the users collection for a unique slug
-          let ref = deb.collection('users').doc(this.slug)
+          let ref = db.collection('users').doc(this.slug)
           ref.get().then(doc => {
             if(doc.exists){
               this.feedback = 'This alias already exists'
