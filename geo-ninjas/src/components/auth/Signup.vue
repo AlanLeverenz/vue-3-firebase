@@ -25,6 +25,8 @@
 <script>
 import slugify from 'slugify'
 import db from '@/firebase/init'
+// need to import the <PACKAGE> i.e., firebase/app
+import firebase from 'firebase/app'
 
 export default {
   name: 'Signup',
@@ -40,7 +42,7 @@ export default {
   },
   methods: {
     signup() {
-      if(this.alias){
+      if(this.alias && this.email && this.password){
         if(this.alias){
           this.slug = slugify(this.alias, {
             replacement: '-',
@@ -56,10 +58,13 @@ export default {
               this.feedback = 'This alias is free to use'
             }
           })
-          console.log(this.slug)
+        } else {
+          firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(err => {
+            console.log(err)
+            this.feedback = err.message
+          })
+          this.feedback = "You must enter all fields"
         }
-      } else {
-        this.feedback = "You must enter an alias"
       }
     }
   }
