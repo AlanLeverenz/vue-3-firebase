@@ -27,6 +27,7 @@ import slugify from 'slugify'
 import db from '@/firebase/init'
 // need to import the <PACKAGE> i.e., firebase/app
 import firebase from 'firebase/app'
+// import fireauth from 'firebase-auth'
 
 export default {
   name: 'Signup',
@@ -43,6 +44,7 @@ export default {
   methods: {
     signup() {
       if(this.alias && this.email && this.password){
+        console.log(this.email, this.password)
         if(this.alias){
           this.slug = slugify(this.alias, {
             replacement: '-',
@@ -55,20 +57,21 @@ export default {
             if(doc.exists){
               this.feedback = 'This alias already exists'
             } else {
+              firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                .catch(err => {
+                console.log(err)
+                this.feedback = err.message
+              })
               this.feedback = 'This alias is free to use'
             }
           })
-        } else {
-          firebase.auth().createUserWithEmailAndPassword(this.email, this.password).catch(err => {
-            console.log(err)
-            this.feedback = err.message
-          })
-          this.feedback = "You must enter all fields"
-        }
-      }
-    }
-  }
-}
+          } else {
+            this.feedback = "You must enter all fields"
+        } // else
+      } // if
+    } // signup
+  } // methods
+} // export
 </script>
 
 <style>
