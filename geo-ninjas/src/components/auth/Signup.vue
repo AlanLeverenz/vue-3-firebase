@@ -45,7 +45,7 @@ export default {
     signup() {
       if(this.alias && this.email && this.password){
         console.log(this.email, this.password)
-        if(this.alias){
+        // if(this.alias){
           this.slug = slugify(this.alias, {
             replacement: '-',
             remove: /[$*_+~.()'"!\-:@]/g,
@@ -68,7 +68,7 @@ export default {
           } else {
             this.feedback = "You must enter all fields"
         } // else
-      } // if
+      // } // if
     } // signup
   } // methods
 } // export
