@@ -27,7 +27,7 @@ import slugify from 'slugify'
 import db from '@/firebase/init'
 // need to import the <PACKAGE> i.e., firebase/app
 import firebase from 'firebase/app'
-// import fireauth from 'firebase-auth'
+require('firebase/auth')
 
 export default {
   name: 'Signup',
