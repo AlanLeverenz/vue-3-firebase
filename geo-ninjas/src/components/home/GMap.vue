@@ -29,8 +29,20 @@ export default {
   },
   // functiont to render the map after DOM has mounted
   mounted() {
-    this.renderMap()
-    console.log(firebase.auth().currentUser)
+    // get user geolocation
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos => {
+        this.lat = pos.coords.latitude
+        this.lng = pos.coords.longitude
+        this.renderMap()
+      }, (err) => {
+        console.log(err)
+        this.renderMap()
+      }, { maximumAge: 60000, timeout: 3000 })
+    } else {
+      // position by default values
+      this.renderMap()
+    }
   }
 }
 </script>
