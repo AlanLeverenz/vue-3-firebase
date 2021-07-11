@@ -29,6 +29,9 @@ export default {
   },
   // functiont to render the map after DOM has mounted
   mounted() {
+    // get current user
+    let user = firebase.auth().currentUser
+    console.log(user)
     // get user geolocation
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(pos => {

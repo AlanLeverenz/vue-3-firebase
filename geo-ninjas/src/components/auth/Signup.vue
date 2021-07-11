@@ -48,7 +48,7 @@ export default {
         // if(this.alias){
           this.slug = slugify(this.alias, {
             replacement: '-',
-            remove: /[$*_+~.()'"!\-:@]/g,
+            remove: /[$*_+~.()'"!\:@]/g,
             lower: true
           })
           // get a reference to the users collection for a unique slug
@@ -62,7 +62,7 @@ export default {
                 const user = cred.user
                 console.log(cred.user)
                 ref.set({
-                  alias: thisalias,
+                  alias: this.alias,
                   geolocation: null,
                   user_id: user.uid
                 })
