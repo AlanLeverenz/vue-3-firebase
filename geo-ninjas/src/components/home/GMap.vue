@@ -45,10 +45,16 @@ export default {
         snapshot.forEach((doc) => {
           // slug of the alias
           console.log(doc.id)
+          db.collection('users').doc(doc.id).update({
+            geolocation: {
+              lat: pos.coords.latitude,
+              lng: pos.coords.longitude
+            }
+          })
         })
-      })
-
-        this.renderMap()
+        }).then(() => {
+          this.renderMap()
+        })
       }, (err) => {
         console.log(err)
         this.renderMap()
