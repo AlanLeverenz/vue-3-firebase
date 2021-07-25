@@ -1,6 +1,7 @@
 <template>
   <div class="navbar">
     <nav>
+      <img src="@/assets/ninja.png" alt="ninja">
       <h1>
         <router-link :to="{ name: 'Home' }">Muso Ninjas</router-link>
       </h1>
@@ -19,6 +20,31 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .navbar {
+    padding: 16px 10px;
+    margin-bottom: 60 px;
+    background: white
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  nav h1 {
+    margin-left: 20px;
+  }
+  nav .links {
+    margin-left: auto;
+  }
+  nav .links a, button {
+    /* margin-left auto pushes items to the right with display flex */
+    margin-left: 16px; 
+    font-size: 14px;
+  }
+  nav img {
+    max-height: 80px;
+  }
 
 </style>
