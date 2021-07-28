@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref } from '@vue/reactivity'
 import { projectAuth } from '../firebase/config'
 
 // refs
