@@ -16,17 +16,22 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import useStorage from '@/composables/useStorage'
 
 export default {
   setup() {
+
+    const { filePath, url, uploadImage } = useStorage()
+
     const title = ref('')
     const description = ref('')
     const file = ref(null)
     const fileError = ref(null)
 
-    const handleSubmit = () => {
-      if(file.value) {
-      console.log(title.value, description.value, file.value)
+    const handleSubmit = async () => {
+      if (file.value) {
+        await uploadImage(file.value)
+        console.log('image uploaded, url: ', url.value)
       }
     }
 
@@ -34,7 +39,7 @@ export default {
   const types = ['image/png', 'image/jpeg']
 
     const handleChange = (e) => {
-      const selected = e.target.files
+      let selected = e.target.files[0]
       console.log(selected)
 
       if (selected && types.includes(selected.type)) {

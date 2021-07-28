@@ -1,6 +1,7 @@
 import { projectStorage } from '../firebase/config'
 import { ref } from '@vue/reactivity'
 import { file } from '@babel/types'  // auto-added when file inserted
+import getUser from './getUser'
 
 const { user } = getUser() // from composable
 
