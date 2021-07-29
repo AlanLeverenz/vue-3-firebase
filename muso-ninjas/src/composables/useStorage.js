@@ -17,7 +17,7 @@ const useStorage = () => {
 
     try {
       const res = await storageRef.put(file) // put function saves the image in fb
-      url.value = res.ref.getDownloadURL() // gets public url for the image
+      url.value = await res.ref.getDownloadURL() // gets public url for the image
     } catch (err) {
       console.log(err.message)
       error.value = err.message
