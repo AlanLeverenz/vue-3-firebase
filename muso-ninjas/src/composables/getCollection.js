@@ -10,7 +10,6 @@ const getCollection = (collection) => {
   let collectionRef = projectFirestore.collection(collection)
     .orderBy('createdAt')
 
-  // unsubscribe
   const unsub = collectionRef.onSnapshot(snap => {
     let results = []
     snap.docs.forEach(doc => {
@@ -27,7 +26,6 @@ const getCollection = (collection) => {
     error.value = 'could not fetch the data'
   })
 
-  // applied when an object is unmounted from the DOM (like moving to another page)
   watchEffect((onInvalidate) => {
     onInvalidate(() => unsub());
   });
