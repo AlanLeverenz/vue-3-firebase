@@ -14,8 +14,8 @@ const getCollection = (collection) => {
     let results = []
     snap.docs.forEach(doc => {
       // must wait for the server to create the timestamp & send it back
-      console.log(doc.data())
       doc.data().createdAt && results.push({...doc.data(), id: doc.id})
+      // console.log(doc.data())
     });
     // update values
     documents.value = results
