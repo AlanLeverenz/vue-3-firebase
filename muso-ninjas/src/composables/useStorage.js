@@ -25,7 +25,18 @@ const useStorage = () => {
     }
   }
 
-  return { url, filePath, error, uploadImage }
+  const deleteImage = async (path) => {
+    // getting a reference to the path of the file in Firebase
+    const storageRef = projectStorage.ref(path)
+    try {
+      await storageRef.delete()
+    } catch (err) {
+      console.log(err.message)
+      error.value = err.message
+    }
+  }
+
+  return { url, filePath, error, uploadImage, deleteImage }
 }
 
 export default useStorage
