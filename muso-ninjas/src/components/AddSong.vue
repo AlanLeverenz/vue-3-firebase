@@ -1,6 +1,7 @@
 <template>
   <div class="add-song">
-    <form>
+    <button v-if="!showForm" @click="showForm = true">Add Songs</button>
+    <form v-if="showForm" @submit.prevent="handleSubmit">
       <h4>Add a New Song</h4>
       <input type="text" placeholder="Song title" required v-model="title">
       <input type="text" placeholder="Artist" required v-model="artist">
@@ -10,8 +11,24 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 export default {
+  setup() {
+    const title = ref('')
+    const artist = ref('')
+    const showForm = ref(false)
 
+    const handleSubmit = () => {
+      const newSong = {
+        title: title.value,
+        artist: artist.value,
+        id: Math.floor( Math.random() * 1000000 )
+      }
+      console.log(newSong)
+    }
+
+    return { title, artist, showForm, handleSubmit }
+  }
 }
 </script>
 
