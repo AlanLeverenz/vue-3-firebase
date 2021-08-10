@@ -21,7 +21,7 @@
           <h3>{{ song.title }}</h3>
           <p>{{ song.artist }}</p>
         </div>
-        <button v-if="ownership">Delete</button>
+        <button v-if="ownership" @click="handleClick(song.id)">Delete</button>
       </div>
       <AddSong v-if="ownership" :playlist="playlist"/>
     </div>
@@ -30,6 +30,12 @@
 </template>
 
 <script>
+// challenge
+// - attach a click handler to the delete song button
+// - inside the handleClick function, use updateDoc function to delete the song
+// - need to pass the song id into the function
+// - use the filter method
+
 import AddSong from '@/components/AddSong.vue'
 import useStorage from '@/composables/useStorage'
 import useDocument from '@/composables/useDocument'
@@ -49,8 +55,8 @@ export default {
     const { error, document: playlist } = getDocument('playlists', props.id)
     // getUser to determine ownership of playlists
     const { user } = getUser()
-    // delete playlist
-    const { deleteDoc } = useDocument('playlists', props.id)
+    // delete playlist or delete song
+    const { deleteDoc, updateDoc } = useDocument('playlists', props.id)
     const { deleteImage } = useStorage()
     const router = useRouter()
 
@@ -64,7 +70,12 @@ export default {
       router.push({ name: 'Home' })
     }
 
-    return { error, playlist, ownership, handleDelete }
+    const handleClick = async (id) => {
+      const songs = playlist.value.songs.filter((song) => song.id != id)
+      await updateDoc({ songs })
+    }
+
+    return { error, playlist, ownership, handleDelete, handleClick }
   }
 }
 </script>
