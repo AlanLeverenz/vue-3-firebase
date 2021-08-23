@@ -28,6 +28,7 @@ import db from '@/firebase/init'
 // need to import the <PACKAGE> i.e., firebase/app
 import firebase from 'firebase/app'
 require('firebase/auth')
+import functions from 'firebase/functions'
 
 export default {
   name: 'Signup',
@@ -52,16 +53,25 @@ export default {
             lower: true
           })
           // get a reference to the users collection for a unique slug
-          let ref = db.collection('users').doc(this.slug)
-          ref.get().then(doc => {
-            if(doc.exists){
+          // let ref = db.collection('users').doc(this.slug)
+          // using functions to do the same as above
+          let checkAlias = firebase.functions().httpsCallable('checkAlias')
+          checkAlias({ slug: this.slug }).then(result => {
+
+          // ref.get().then(doc => {
+            // if(doc.exists){
+            
+            // using callable function now
+            console.log(result)
+            if(!result.data.unique){
               this.feedback = 'This alias already exists'
-            } else {
+              } else {
               firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
               .then(cred => {
                 const user = cred.user
                 console.log(cred.user)
-                ref.set({
+                // ref.set({
+                db.collection('users').doc(this.slug).set({
                   alias: this.alias,
                   geolocation: null,
                   user_id: user.uid
@@ -75,7 +85,7 @@ export default {
               })
               this.feedback = 'This alias is free to use'
             }
-          })
+            })
           } else {
             this.feedback = "You must enter all fields"
         } // else
