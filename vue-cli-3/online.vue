@@ -21,7 +21,7 @@ export default {
   // }
   computed: {  // online is treated as a function to compute
     online() {
-      return this.status == 'online'
+      return this.status == 'online' // returns true if online or false if not
     }
   }
 
